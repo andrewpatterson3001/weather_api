@@ -44,8 +44,8 @@ class User < ApplicationRecord
   end
 
   def activate
-  	user.update_attribute(:activated,    true)
-    user.update_attribute(:activated_at, Time.zone.now)
+  	update_attribute(:activated,    true)
+    update_attribute(:activated_at, Time.zone.now)
   end
 
   def send_activation_email
