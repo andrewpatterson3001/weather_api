@@ -10,7 +10,9 @@ class User < ApplicationRecord
   					uniqueness: {case_sensitive: false}
 
   has_secure_password
-  validates :password, presence: true, length: { minimum: 6 }
+  #has_secure_password doesnt allow empty string passwords, and we want to allow updates without
+  #re-entering passwords, so the allows_nil is set to true below
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
   # Returns the hash digest of the given string.
   def User.digest(string)
